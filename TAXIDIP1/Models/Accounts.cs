@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TAXIDIP1
+namespace TAXIDIP1.Models
 {
     public partial class Accounts
     {

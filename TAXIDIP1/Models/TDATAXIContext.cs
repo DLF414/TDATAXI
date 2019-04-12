@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace TAXIDIP1
+namespace TAXIDIP1.Models
 {
     public partial class TDATAXIContext : DbContext
     {

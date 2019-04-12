@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NpgsqlTypes;
 
-namespace TAXIDIP1
+namespace TAXIDIP1.Models
 {
     public partial class Rides
     {
