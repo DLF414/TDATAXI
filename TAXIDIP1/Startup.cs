@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TAXIDIP1.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace TAXIDIP1
 {
@@ -35,6 +36,12 @@ namespace TAXIDIP1
             });
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<TDATAXIContext>(options => options.UseNpgsql(connection));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+               .AddCookie(options =>
+               {
+                   options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Auth/Login");
+                   options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Auth/Login");
+               });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -54,6 +61,7 @@ namespace TAXIDIP1
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

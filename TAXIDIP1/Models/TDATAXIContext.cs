@@ -393,9 +393,9 @@ namespace TAXIDIP1.Models
 
                 entity.Property(e => e.AddressCurrent).HasColumnName("address_current");
 
-                entity.Property(e => e.AddressEnd).HasColumnName("address_end");
+                entity.Property(e => e.AddressEnd).HasColumnName("address_end").HasMaxLength(50); 
 
-                entity.Property(e => e.AddressStart).HasColumnName("address_start");
+                entity.Property(e => e.AddressStart).HasColumnName("address_start").HasMaxLength(50); 
 
                 entity.Property(e => e.ClientId).HasColumnName("client_id");
 
@@ -409,7 +409,7 @@ namespace TAXIDIP1.Models
 
                 entity.Property(e => e.IsAccepted)
                     .HasColumnName("is_accepted")
-                    .HasColumnType("timestamp with time zone");
+                    .HasColumnType("boolean");
 
                 entity.Property(e => e.IsCanceled).HasColumnName("is_canceled");
 

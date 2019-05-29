@@ -1,0 +1,47 @@
+﻿@model TAXIDIP1.Models.Feedback
+
+@{
+    ViewData["Title"] = "UserFeedbackDisplay";
+}
+
+<h2>UserFeedbackDisplay</h2>
+
+<div>
+    <h4>Feedback</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ответ администратора
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Responce)
+        </dd>
+        <dt>
+            Тип отзыва
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt>
+            Текст
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt>
+           Дата
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+    </dl>
+</div>
+<div>
+    @{ if (Model.Responce==null)
+        {
+            <a asp-action="ClientEdit" asp-route-id="@Model.Id">Изменить</a> 
+}
+    }
+
+     <a asp-controller="Menu" asp-action="Index"> Вернуться в меню</a>
+</div>

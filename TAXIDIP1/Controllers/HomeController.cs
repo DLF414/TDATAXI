@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TAXIDIP1.Models;
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace TAXIDIP1.Controllers
 {
     public class HomeController : Controller

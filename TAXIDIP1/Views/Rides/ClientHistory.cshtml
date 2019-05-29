@@ -1,0 +1,91 @@
+﻿@model IEnumerable<TAXIDIP1.Models.Rides>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ClientHistory</title>
+</head>
+<body>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Расстояние
+            </th>
+            <th>
+               Цена
+            </th>
+            <th>
+                Когда принято
+            </th>
+            <th>
+                Адрес начала поездки
+            </th>
+            <th>
+               Адрес конца поездки
+            </th>
+            <th>
+                Была ли отменена поездка
+            </th>
+            <th>
+                Оценка
+            </th>
+            <th>
+                Время создания заказа
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcceptedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCanceled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @{ if (item.IsComplained != true && item.Price!=null)
+                    {
+                        <a asp-action="Create" asp-route-id="@item.Id" asp-controller="Feedbacks">Создать отзыв</a>
+                    }
+                    if (item.IsComplained == true)
+                    {
+                        <a asp-action="GetFeedback" asp-route-id="@item.Id" asp-controller="Feedbacks">Просмотреть отзыв</a>
+                    }
+                }
+                @{ if (item.Rate== null && item.Price != null)
+                    {
+                        <a asp-action = "Rate" asp-route-id = "@item.Id"> Оценить </a>
+                     }
+                }
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

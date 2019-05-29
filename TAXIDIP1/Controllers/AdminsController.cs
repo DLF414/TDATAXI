@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TAXIDIP1.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TAXIDIP1.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminsController : Controller
     {
         private readonly TDATAXIContext _context;

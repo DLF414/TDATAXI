@@ -1,0 +1,18 @@
+﻿
+<div class="row">
+    @{ if (ViewData["Role"].ToString() == "client")
+        {
+            await Html.RenderPartialAsync("ClientMenu");
+        }
+    }
+    @{ if (ViewData["Role"].ToString() == "driver")
+        {
+            await Html.RenderPartialAsync("DriverMenu");
+        }
+    }
+    @{ if (ViewData["Role"].ToString() == "admin")
+        {
+            await Html.RenderPartialAsync("AdminMenu");
+        }
+    }
+    </div>

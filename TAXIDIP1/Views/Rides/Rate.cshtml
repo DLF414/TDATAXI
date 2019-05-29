@@ -1,0 +1,41 @@
+﻿@model TAXIDIP1.Models.Rides
+
+<!DOCTYPE html>
+                                                                                                            
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Оценить</title>
+</head>
+<body>
+
+    <h4>Оценить</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Rate">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Rate" class="control-label"></label>
+                    <input checked="checked" name="Rate" type="radio" value="5" />
+                    <span>5</span>
+                    <input name="Rate" type="radio" value="4" />
+                    <span>4</span>
+                    <input name="Rate" type="radio" value="3" />
+                    <span>3</span>
+                    <input name="Rate" type="radio" value="2" />
+                    <span>2</span>
+                    <input name="Rate" type="radio" value="1" />
+                    <span>1</span>
+                    <span asp-validation-for="Rate" class="text-danger"></span><br />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Оценить" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
+

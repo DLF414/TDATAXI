@@ -1,0 +1,87 @@
+﻿@model IEnumerable<TAXIDIP1.Models.Rides>
+
+@{
+    ViewData["Title"] = "DriverHistory";
+}
+
+<h2>История Заказов</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Расстояние
+            </th>
+            <th>
+               Цена
+            </th>
+            <th>
+                Время принятия
+            </th>
+            <th>
+               Начальный адрес
+            </th>
+            <th>
+                Конечный адрес
+            </th>
+            <th>
+               Отменен?
+            </th>
+            <th>
+               Оценка
+            </th>
+            <th>
+                Отзыв?
+            </th>
+            <th>
+               Создан
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AcceptedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsCanceled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsComplained)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @{ if (item.Price == null)
+                    {
+                        <a asp-action="Finish" asp-route-id="@item.Id">Завершить заказ</a>
+
+                    }
+                    else
+                    {
+                        <a asp-action="Create" asp-route-id="@item.Id" asp-controller="Feedbacks">Оставить отзыв/репорт</a>
+                    }
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

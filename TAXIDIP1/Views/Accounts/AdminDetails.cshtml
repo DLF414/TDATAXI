@@ -1,15 +1,21 @@
 ﻿@model TAXIDIP1.Models.Accounts
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "AdminDetails";
 }
 
-<h2>Details</h2>
+<h2>AdminDetails</h2>
 
 <div>
     <h4>Accounts</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsBlocked)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsBlocked)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Login)
         </dt>
@@ -43,7 +49,15 @@
     </dl>
 </div>
 <div>
-
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @{if (Model.IsBlocked != true)
+        {
+            <a asp-action="Ban" asp-route-id="@Model.Id">Заблокировать</a>
+        }
+        else
+        {
+            <a asp-action="Unban" asp-route-id="@Model.Id">Разблокировать</a>
+        }
+    }
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index" asp-controller="Feedbacks">Вернуться к списку</a>
 </div>

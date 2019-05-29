@@ -6,6 +6,7 @@ namespace TAXIDIP1.Models
     public partial class Accounts
     {
         public int Id { get; set; }
+        public bool? IsBlocked { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }

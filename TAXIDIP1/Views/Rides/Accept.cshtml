@@ -1,0 +1,65 @@
+﻿@model TAXIDIP1.Models.Rides
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Accept</title>
+</head>
+<body>
+
+<div>
+    <h4>Rides</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Distance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AcceptedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AcceptedAt)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressStart)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AddressStart)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressEnd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AddressEnd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsCanceled)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsCanceled)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Finish" asp-route-id="@Model.Id">Завершить</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

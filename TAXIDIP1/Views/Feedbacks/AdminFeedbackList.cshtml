@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TAXIDIP1.Models.Feedback>
+
+@{
+    ViewData["Title"] = "AdminFeedbackList";
+}
+
+<h2>AdminFeedbackList</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Responce)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createdBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ride)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Responce)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ride.Id)
+            </td>
+            <td>
+                <a asp-action="ManageDriver" asp-route-id="@item.Id">Аккаунт водителя</a> <br />
+                <a asp-action="ManageClient" asp-route-id="@item.Id">Аккаунт клиента</a> <br />
+                <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Rides">Просмотр поездки</a> <br />
+                <a asp-action="CreateResponse" asp-route-id="@item.Id">Ответить</a> <br />
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

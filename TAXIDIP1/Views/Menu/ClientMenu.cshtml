@@ -1,0 +1,25 @@
+﻿
+<div class="row">
+
+    <div class="col-md-3">
+        <h2>Меню клиента</h2>
+        <ul>
+            @{ if (ViewData["UserInfo"].ToString() == "true")
+                {
+                    <li>
+                        <a asp-area="" asp-controller="Rides" asp-action="Create">Заказ такси</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Rides" asp-action="Index">История поездок</a>
+                    </li>
+                    <li>   <a asp-area="" asp-controller="Clients" asp-action="Update">Обновить информацию о пользователе</a> </li>
+                }
+                else
+                {
+                <li>   <a asp-area="" asp-controller="Clients" asp-action="Create">Заолнить информацию о пользователе</a> </li>
+                    }
+                }
+        </ul>
+    </div>
+
+</div>

@@ -1,0 +1,40 @@
+﻿
+<div class="row">
+    <br />
+    <br />
+     <br />
+    <br />
+    <br />
+</div>
+
+
+<div class="row">
+
+    <div class="col-md-3">
+        <h2>Меню водителя</h2>
+        <ul>
+            @{ if (ViewData["UserInfo"].ToString() == "true")
+                {
+                    <li>
+                        <a asp-area="" asp-controller="Rides" asp-action="NotAccepted">Просмотр непринятых заказов</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Rides" asp-action="DriverHistory">История поездок</a>
+                    </li>
+
+                    <li>   <a asp-area="" asp-controller="Drivers" asp-action="Update">Обновить личную информацию</a> </li>
+                }
+                else
+                {
+                    <li>
+                        <a asp-area="" asp-controller="Drivers" asp-action="Create">Заполнить личную информацию</a>
+                    </li>
+                }
+            }
+
+
+
+        </ul>
+    </div>
+
+</div>

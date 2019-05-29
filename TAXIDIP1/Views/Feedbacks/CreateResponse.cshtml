@@ -1,0 +1,30 @@
+﻿@model TAXIDIP1.Models.Feedback
+
+@{
+    ViewData["Title"] = "Response";
+}
+
+<h2>Ответ</h2>
+
+<h4>Ответ</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateResponse">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Responce" class="control-label"></label>
+                <input asp-for="Responce" class="form-control" />
+                <span asp-validation-for="Responce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Отправить" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="AdminFeedbackList">Вернуться к списку</a>
+</div>
+

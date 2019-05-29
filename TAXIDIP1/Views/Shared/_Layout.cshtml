@@ -30,9 +30,25 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">На главную</a></li>
+                    @using System.Security.Claims
+                    @{
+                        string login = User.Identity.Name;
+                        if (User.IsInRole("driver"))
+                        {
+                            <li><a asp-area="" asp-controller="Drivers" asp-action="Details" asp-route-id=@(User.FindFirst(x => x.Type == ClaimTypes.Actor).Value)>@login</a></li> }
+                        if (User.IsInRole("client"))
+                        {
+                            <li><a asp-area="" asp-controller="Clients" asp-action="Details" asp-route-id=@(User.FindFirst(x => x.Type == ClaimTypes.Actor).Value)>@login</a></li> }
+                        if (User.IsInRole("admin"))
+                        {
+                            <li><a asp-area="" >@login</a></li> }} }
+                    @{
+
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a asp-area="" asp-controller="Auth" asp-action="Logout">Выход</a></li>}
+                    }
                 </ul>
             </div>
         </div>

@@ -13,9 +13,9 @@ namespace TAXIDIP1.Models
         public decimal? Price { get; set; }
         public DateTime? AcceptedAt { get; set; }
         public DateTime? StartedAt { get; set; }
-        public DateTime? IsAccepted { get; set; }
-        public NpgsqlPoint? AddressStart { get; set; }
-        public NpgsqlPoint? AddressEnd { get; set; }
+        public bool? IsAccepted { get; set; }
+        public string AddressStart { get; set; }
+        public string AddressEnd { get; set; }
         public NpgsqlPoint? AddressCurrent { get; set; }
         public bool? IsCanceled { get; set; }
         public short? Rate { get; set; }

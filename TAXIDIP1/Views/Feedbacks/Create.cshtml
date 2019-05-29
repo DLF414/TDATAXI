@@ -4,6 +4,36 @@
     ViewData["Title"] = "Create";
 }
 
+<script src="https://code.jquery.com/jquery-3.4.0.slim.min.js"
+        integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI="
+        crossorigin="anonymous"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+<style>
+    .field-validation-error {
+        color: #b94a48;
+    }
+
+    .field-validation-valid {
+        display: none;
+    }
+
+    input.input-validation-error {
+        border: 1px solid #b94a48;
+    }
+
+    input[type="checkbox"].input-validation-error {
+        border: 0 none;
+    }
+
+    .validation-summary-errors {
+        color: #b94a48;
+    }
+
+    .validation-summary-valid {
+        display: none;
+    }
+    </style>
 <h2>Create</h2>
 
 <h4>Feedback</h4>
@@ -12,29 +42,39 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @{ int rideId = Convert.ToInt32(ViewData["RideId"].ToString());
+
+             <input type= "hidden" asp-for="RideId" value="@rideId"/>
+            }
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RideId" class="control-label"></label>
-                <select asp-for="RideId" class ="form-control" asp-items="ViewBag.RideId"></select>
+                @{ if (User.IsInRole("driver"))
+                    {
+                        <label asp-for="Type" class="control-label"></label>
+                        <input asp-for="Type" checked="checked" name="Type" type="radio" value="report" />
+                        <span>Репорт</span>
+                        <input asp-for="Type" name="Type" type="radio" value="negative" />
+                        <span>Жалоба</span>
+                        <span asp-validation-for="Type" class="text-danger"></span><br />
+                    }
+                }
+                @{ if (User.IsInRole("client"))
+                    {
+                        <label asp-for="Type" class="control-label"></label>
+                        <input asp-for="Type" checked="checked" name="Type" type="radio" value="positive" />
+                        <span>Позитивный отзыв</span>
+                        <input asp-for="Type" name="Type" type="radio" value="negative" />
+                        <span>Жалоба</span>
+                        <input asp-for="Type" name="Type" type="radio" value="offer" />
+                        <span>Предложение/пожелание</span>
+                        <span asp-validation-for="Type" class="text-danger"></span><br />
+                    }
+                }
+
             </div>
             <div class="form-group">
                 <label asp-for="Note" class="control-label"></label>
                 <input asp-for="Note" class="form-control" />
                 <span asp-validation-for="Note" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedAt" class="control-label"></label>
-                <input asp-for="CreatedAt" class="form-control" />
-                <span asp-validation-for="CreatedAt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdatedAt" class="control-label"></label>
-                <input asp-for="UpdatedAt" class="form-control" />
-                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -43,9 +83,6 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
